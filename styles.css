@@ -196,3 +196,61 @@ body {
     50% { transform: rotate(10deg) translateY(-5px); } /* Upward curve */
     100% { transform: rotate(-5deg) translateY(0); } /* Slight backswing */
   }
+
+  /* ... (Your existing styles) ... */
+  
+ /* Big House */
+ .house {
+   position: absolute;
+   right: 5%; 
+   top: 60%; 
+   transform: translateY(-50%); 
+   width: 320px; /* Width is 4 times larger */
+   height: 240px; /* Height is 4 times larger */
+ }
+ 
+ .house .roof {
+   width: 0;
+   height: 0;
+   border-left: 160px solid transparent; /* Border size increased 4x */
+   border-right: 160px solid transparent; /* Border size increased 4x */
+   border-bottom: 120px solid brown; /* Border size increased 4x */
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+ 
+ .house .walls {
+   width: 320px; /* Width increased 4x */
+   height: 120px; /* Height increased 4x */
+   background-color: beige; 
+   position: absolute;
+   bottom: 0;
+   left: 0;
+ }
+ 
+ .house .door {
+   width: 60px; /* Width increased 4x */
+   height: 80px; /* Height increased 4x */
+   background-color: saddlebrown; 
+   position: absolute;
+   bottom: 5px;
+   left: 120px; /* Adjusted position for larger house */
+ }
+ 
+ .house .window {
+   width: 40px; /* Width increased 4x */
+   height: 40px; /* Height increased 4x */
+   background-color: lightblue; 
+   position: absolute;
+   top: 40px; /* Adjusted position for larger house */
+ }
+ 
+ .house .window.left {
+   left: 60px; /* Adjusted position for larger house */
+ }
+ 
+ .house .window.right {
+   right: 60px; /* Adjusted position for larger house */
+ }
+ 
