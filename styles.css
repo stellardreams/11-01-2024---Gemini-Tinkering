@@ -1,10 +1,11 @@
 body {
-  background-color: #000; 
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  overflow: hidden; /* Prevent scrollbars from orbs going offscreen */
 }
 
 .container {
@@ -14,26 +15,27 @@ body {
 }
 
 .sun {
-  background-color: #ffbb33; /* Yellow sun */
+  background-color: #ffbb33; 
   border-radius: 50%;
   width: 80px;
   height: 80px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 50px #ffbb33; /* Sun glow */
 }
 
 .orbiting-sun {
-  background-color: #ff5500; /* Orange sun */
+  background-color: #ff5500; 
   border-radius: 50%;
   width: 40px;
   height: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100px); 
-  animation: orbit 10s linear infinite; 
+  transform: translate(-50%, -100px);
+  animation: orbit 10s linear infinite;
 }
 
 .black-hole {
@@ -42,16 +44,100 @@ body {
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 100px; 
+  top: 100px;
   left: 150px; 
+  box-shadow: 0 0 30px #000; /* Black hole effect */
 }
 
 /* Orbit Animation */
 @keyframes orbit {
-  0% { 
-    transform: rotate(0deg) translate(100px, 0); /* Orbit radius */
+  0% {
+    transform: rotate(0deg) translate(100px, 0); 
   }
-  100% { 
-    transform: rotate(360deg) translate(100px, 0); /* Orbit radius */
+  100% {
+    transform: rotate(360deg) translate(100px, 0); 
   }
+}
+
+/* --- Funky Additions --- */
+
+/* Orbs (randomly positioned and animated) */
+.orb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #00ffff; /* Cyan */
+  animation: float 8s linear infinite;
+}
+
+.orb:nth-child(2) { 
+  background-color: #ff00ff; /* Magenta */
+  animation-duration: 12s; /* Different speed */
+  left: 80%; 
+  top: 20%;
+}
+
+.orb:nth-child(3) { 
+  background-color: #ffff00; /* Yellow */
+  animation-duration: 5s; /* Different speed */
+  left: 10%; 
+  top: 70%;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -30px); } /* Adjust for floating effect */
+  100% { transform: translate(0, 0); }
+}
+
+/* Spaceship */
+.spaceship {
+  width: 50px;
+  height: 20px;
+  background-color: #ccc;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  animation: fly 15s linear infinite;
+}
+
+.spaceship::before { /* Cockpit */
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: #666;
+  border-radius: 50%;
+}
+
+@keyframes fly {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(200px, -50px); } /* Adjust flight path */
+  100% { transform: translate(0, 0); }
+}
+
+/* Alien (using simple shapes) */
+.alien {
+  position: absolute;
+  top: 150px;
+  right: 30px;
+  width: 30px;
+  height: 40px;
+}
+
+.alien .head {
+  width: 30px;
+  height: 20px;
+  background-color: green;
+  border-radius: 50% 50% 0 0; /* Rounded top */
+}
+
+.alien .body {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  margin: 0 auto; /* Center the body */
 }
