@@ -254,3 +254,44 @@ body {
    right: 60px; /* Adjusted position for larger house */
  }
  
+
+ /* ... (Your existing styles) ... */
+ 
+ /* Chase Scene */
+ .chase-scene {
+   position: absolute;
+   bottom: 20px; /* Position above the bottom */
+   left: 0;
+   width: 100%;
+   height: 80px; /* Adjust height as needed */
+   overflow: hidden; /* Hide elements that move outside */
+ }
+ 
+ /* Cat */
+ .cat {
+   width: 40px;
+   height: 30px;
+   background-color: orange;
+   position: absolute;
+   right: -50px; /* Start off-screen to the right */
+   bottom: 10px;
+   animation: run 5s linear infinite; /* Adjust speed as needed */
+ }
+ 
+ /* Dog */
+ .dog {
+   width: 50px;
+   height: 40px;
+   background-color: brown;
+   position: absolute;
+   right: -80px; /* Start further off-screen */
+   bottom: 5px;
+   animation: run 4s linear infinite; /* Slightly faster than the cat */
+ }
+ 
+ /* Running Animation */
+ @keyframes run {
+   0% { transform: translateX(0); }
+   100% { transform: translateX(-120vw); } /* Move across the screen */
+ }
+ 
