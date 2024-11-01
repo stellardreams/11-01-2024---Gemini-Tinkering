@@ -130,3 +130,69 @@ body {
 .giraffe .leg:nth-child(2) { left: 40%; }
 .giraffe .leg:nth-child(3) { left: 60%; }
 .giraffe .leg:nth-child(4) { left: 90%; }
+
+/* ... (Your existing styles) ... */
+
+/* Golden Octopus */
+.octopus {
+  position: absolute;
+  right: 5%; /* Adjust right position */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+  width: 150px;
+  height: 120px;
+}
+
+.octopus .head {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(212, 175, 55, 0.8);
+  border-radius: 60% 60% 40% 40%;
+  transform: rotate(20deg);
+}
+
+.octopus .eye { 
+    width: 15px;
+    height: 15px;
+    background-color: #111; /* Very dark, almost black eyes */
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* Subtle eye shine */
+  }  
+
+.octopus .eye.left {
+  left: 15px;
+}
+
+.octopus .eye.right {
+  right: 15px;
+}
+
+.octopus .arm {
+    width: 120px; /* Longer arms */
+    height: 12px; /* Thicker at the base */
+    background-color: rgba(212, 175, 55, 0.8); /* Matching translucency */
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: 10px; /* Start lower for more head prominence */
+    transform-origin: 50% 100%;
+    animation: tentacle-wave 4s linear infinite alternate; /* Slower wave */
+  }
+  
+
+.octopus .arm-1 { left: 0;  transform: rotate(-45deg); animation-delay: 0.1s; }
+.octopus .arm-2 { left: 15%; transform: rotate(-30deg); animation-delay: 0.2s; }
+.octopus .arm-3 { left: 30%; transform: rotate(-15deg); animation-delay: 0.3s; }
+.octopus .arm-4 { left: 45%; transform: rotate(0deg);   animation-delay: 0.4s; }
+.octopus .arm-5 { left: 55%; transform: rotate(15deg);  animation-delay: 0.5s; }
+.octopus .arm-6 { left: 70%; transform: rotate(30deg);  animation-delay: 0.6s; }
+.octopus .arm-7 { left: 85%; transform: rotate(45deg);  animation-delay: 0.7s; }
+.octopus .arm-8 { left: 100%; transform: rotate(60deg); animation-delay: 0.8s; }
+
+/* Tentacle Wave Animation */
+@keyframes tentacle-wave {
+    0% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(10deg) translateY(-5px); } /* Upward curve */
+    100% { transform: rotate(-5deg) translateY(0); } /* Slight backswing */
+  }
