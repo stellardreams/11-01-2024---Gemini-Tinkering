@@ -371,3 +371,30 @@ body {
    100% { transform: translateX(-120vw); } /* Move across the screen */
  }
  
+ .blog-post {
+   border: 1px solid #ccc;
+   padding: 20px;
+   margin-bottom: 20px;
+ }
+ 
+ .blog-post h2 {
+   color: blue;
+ }
+ 
+ /* ... (Your other styles) ... */
+ 
+ nav {
+   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+   padding: 10px;
+   position: fixed; /* Keep it at the top */
+   top: 0;
+   left: 0;
+   width: 100%;
+ }
+ 
+ nav a {
+   color: white;
+   text-decoration: none;
+   margin-right: 20px;
+ }
+ 
