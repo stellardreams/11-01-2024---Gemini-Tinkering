@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
   <title>Celestial Dance</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> 
 </head>
 
- <script src="script.js"></script>
 
   <p class="tinkering-text">We Tinkering</p>
 
@@ -51,6 +50,40 @@
       <div class="arm arm-7"></div>
       <div class="arm arm-8"></div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src="script.js"></script> 
+  
+    // Assuming you're using a graphics library like p5.js
+    // Add this script tag inside your <head> tag if you haven't already:
+    // <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    
+    function setup() {
+      createCanvas(windowWidth, windowHeight); // Create a full-width canvas
+    }
+    
+    function draw() {
+      background(0); // Set a dark background (optional)
+      createBrickWall(0, 0, windowWidth, 50, 'red'); // Draw the wall at the top
+    }
+    
+    function createBrickWall(x, y, wallWidth, wallHeight, brickColor) {
+      const brickWidth = 50;
+      const brickHeight = 20;
+      const brickGap = 5;
+    
+      for (let row = 0; row * brickHeight < wallHeight; row++) {
+        let brickOffset = (row % 2 === 0) ? brickWidth / 2 : 0; // Offset for brick pattern
+    
+        for (let col = 0; (col * brickWidth) + brickOffset < wallWidth; col++) {
+          let brickX = x + (col * brickWidth) + brickOffset;
+          let brickY = y + (row * brickHeight);
+    
+          fill(brickColor);
+          rect(brickX, brickY, brickWidth - brickGap, brickHeight - brickGap);
+        }
+      }
+    }
 
 </body>
 </html>
