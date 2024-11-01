@@ -24,7 +24,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-40%, -520px); /* Adjusted position */
+  animation: orbit 1s linear infinite; /* Slower orbit */
+
   box-shadow: 0 0 50px #ffbb33; 
 }
 
@@ -36,21 +38,34 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -120px); /* Adjusted position */
-  animation: orbit 15s linear infinite; /* Slower orbit */
+  transform: translate(-440%, -520px); /* Adjusted position */
+  animation: orbit 0.000021s linear infinite; /* Slower orbit */
 }
 
 .black-hole {
   background-color: black;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   position: absolute;
-  top: 100px;
-  left: 150px; 
-  box-shadow: 0 0 30px #000; 
-  animation: warp 8s ease-in-out infinite alternate; /* New animation */
+  top: 120px;
+  left: 140px; 
+  box-shadow: 22px 22px 4 30px #000; 
+  animation: warp 2s ease-in-out infinite alternate; /* New animation */
 }
+
+.black-hole4 {
+    background-color: rgb(220, 47, 47);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 110px;
+    left: 140px; 
+    box-shadow: 22px 22px 4 30px #000; 
+    animation: warp2s ease-in-out infinite alternate;
+ cubic-bezier(0.39, 0.575, 0.565, 1) ease-in-out infinite alternate; /* New animation */
+  }
 
 @keyframes orbit {
   0% { transform: rotate(0deg) translate(100px, 0); }
