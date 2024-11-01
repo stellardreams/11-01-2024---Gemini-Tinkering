@@ -1,102 +1,115 @@
-!DOCTYPE html>
-<html>
-<head>
-  <title>Celestial Dance</title>
-  <link rel="stylesheet" href="styles.css"> 
-</head>
+const { expect } = require("chai");
+const { JSDOM } = require("jsdom");
 
+describe("CSS Styles (styles.css)", () => {
+  let dom;
+  let document;
+  let window; // Add window to access getComputedStyle
 
-  <p class="tinkering-text">We Tinkering</p>
+  beforeEach(() => {
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Celestial Dance</title>
+        <link rel="stylesheet" href="styles.css">
+      </head>
+      <body>
+        <div class="container">
+          <div class="sun"></div>
+          <div class="orbiting-sun"></div>
+          <div class="black-hole"></div>
+        </div>
+        <div class="container left-system">
+          <div class="sun"></div>
+          <div class="orbiting-sun"></div>
+          <div class="giraffe">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="leg"></div>
+            <div class="leg"></div>
+            <div class="leg"></div>
+            <div class="leg"></div>
+          </div>
+          <div class="black-hole"></div>
+        </div>
+        <div class="octopus">
+          <div class="head"></div>
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="arm arm-1"></div>
+          <div class="arm arm-2"></div>
+          <div class="arm arm-3"></div>
+          <div class="arm arm-4"></div>
+          <div class="arm arm-5"></div>
+          <div class="arm arm-6"></div>
+          <div class="arm arm-7"></div>
+          <div class="arm arm-8"></div>
+        </div>
+        <div class="house">
+          <div class="roof"></div>
+          <div class="walls"></div>
+          <div class="door"></div>
+          <div class="window left"></div>
+          <div class="window right"></div>
+        </div>
+        <div class="chase-scene">
+          <div class="cat"></div>
+          <div class="dog"></div>
+        </div>
+        <div class="spaceship"></div>
+      </body>
+      </html>
+    `;
+    dom = new JSDOM(html, { resources: "usable" }); // Make sure CSS is applied
+    document = dom.window.document;
+    window = dom.window; // Get the window object
+  });
 
+  it("should have a black background", () => {
+    const bodyStyle = window.getComputedStyle(document.body);
+    expect(bodyStyle.backgroundColor).to.equal("rgb(0, 0, 0)");
+  });
 
-<body>
+  it("Sun should have a yellow background and a box shadow", () => {
+    const sun = document.querySelector(".sun");
+    const sunStyle = window.getComputedStyle(sun);
+    expect(sunStyle.backgroundColor).to.equal("rgb(255, 187, 51)");
+    expect(sunStyle.boxShadow).to.equal("rgb(255, 187, 51) 0px 0px 50px");
+  });
 
-  <div class="container">
-    <div class="sun"></div>
-    <div class="orbiting-sun"></div>
-    <div class="black-hole"></div>
+  it("giraffe should have orange background and 4 legs", () => {
+    const giraffe = document.querySelector(".giraffe");
+    const giraffeStyle = window.getComputedStyle(giraffe);
+    expect(giraffeStyle.backgroundColor).to.equal("rgb(255, 165, 0)");
+    const legs = document.querySelectorAll(".giraffe .leg");
+    expect(legs.length).to.equal(8); // There are two giraffes, each with 4 legs
+  });
 
-    <div class="orb"></div> <div class="orb"></div> <div class="orb"></div>
-    <div class="spaceship"></div>
-    <div class="alien">
-      <div class="head"></div>
-      <div class="body"></div>
-    </div>
+  it("octopus should have 8 arms", () => {
+    const arms = document.querySelectorAll(".octopus .arm");
+    expect(arms.length).to.equal(8);
+  });
 
-    <div class="container left-system"> 
-        <div class="sun"></div>
-        <div class="orbiting-sun"></div>
-        <div class="giraffe"></div> <div class="black-hole"></div> 
-      </div>
-  </div>
+  it("house should be 4 times bigger than original size", () => {
+    const house = document.querySelector(".house");
+    const houseStyle = window.getComputedStyle(house);
+    expect(parseInt(houseStyle.width)).to.equal(320);
+    expect(parseInt(houseStyle.height)).to.equal(240);
+  });
 
-  <div class="giraffe">
-    <div class="head"></div>
-    <div class="body"></div>
-    <div class="leg"></div> <div class="leg"></div>
-    <div class="leg"></div> <div class="leg"></div>
-  </div>
-  
-    <div class="octopus">
-      <div class="head"></div>
-      <div class="eye left"></div>
-      <div class="eye right"></div>
-      <div class="arm arm-1"></div>
-      <div class="arm arm-2"></div>
-      <div class="arm arm-3"></div>
-      <div class="arm arm-4"></div>
-      <div class="arm arm-5"></div>
-      <div class="arm arm-6"></div>
-      <div class="arm arm-7"></div>
-      <div class="arm arm-8"></div>
-    </div>
+  it("left window of the house should be a portal", () => {
+    const window = document.querySelector(".house .window.left");
+    const windowStyle = window.getComputedStyle(window);
+    expect(windowStyle.backgroundColor).to.equal("rgb(0, 0, 0)");
+    expect(windowStyle.borderRadius).to.equal("50%");
+  });
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-    <script src="script.js"></script> 
-  
-    // Assuming you're using a graphics library like p5.js
-    // Add this script tag inside your <head> tag if you haven't already:
-    // <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-    
-    function setup() {
-      createCanvas(windowWidth, windowHeight); // Create a full-width canvas
-    }
-    
-    function draw() {
-      background(0); // Set a dark background (optional)
-      createBrickWall(0, 0, windowWidth, 50, 'red'); // Draw the wall at the top
-    }
-    
-    function createBrickWall(x, y, wallWidth, wallHeight, brickColor) {
-      const brickWidth = 50;
-      const brickHeight = 20;
-      const brickGap = 5;
-    
-      for (let row = 0; row * brickHeight < wallHeight; row++) {
-        let brickOffset = (row % 2 === 0) ? brickWidth / 2 : 0; // Offset for brick pattern
-    
-        for (let col = 0; (col * brickWidth) + brickOffset < wallWidth; col++) {
-          let brickX = x + (col * brickWidth) + brickOffset;
-          let brickY = y + (row * brickHeight);
-    
-          fill(brickColor);
-          rect(brickX, brickY, brickWidth - brickGap, brickHeight - brickGap);
-        }
-      }
-    }
+  it("spaceship should be docked outside the house", () => {
+    const spaceship = document.querySelector(".spaceship");
+    const spaceshipStyle = window.getComputedStyle(spaceship);
+    expect(spaceshipStyle.animationName).to.equal("none"); // Check if animation is removed
+  });
 
-<div class="house">
-  <div class="roof"></div>
-  <div class="walls"></div>
-  <div class="door"></div>
-  <div class="window left"></div>
-  <div class="window right"></div>
-</div>
-
-<div class="chase-scene">
-  <div class="cat"></div>
-  <div class="dog"></div>
-</div>
-
-</body>
-</html>
+  // Add more tests for other CSS properties and elements as needed
+});

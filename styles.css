@@ -246,13 +246,74 @@ body {
    top: 40px; /* Adjusted position for larger house */
  }
  
- .house .window.left {
-   left: 60px; /* Adjusted position for larger house */
- }
+/* ... (Your other styles) ... */
+
+.house .window.left { 
+  left: 60px; 
+  width: 60px; /* Adjust size as needed */
+  height: 60px;
+  background-color: black; /* Base color for space */
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Hide content that overflows */
+}
+
+.house .window.left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px; /* Slightly larger than the window */
+  height: 70px;
+  background: radial-gradient(
+    circle, 
+    rgba(0, 0, 255, 0.8), /* Blue-ish center */
+    rgba(0, 0, 0, 0) 70% /* Fades to transparent */
+  );
+  filter: blur(10px); /* Add a blur effect */
+}
+
  
  .house .window.right {
    right: 60px; /* Adjusted position for larger house */
  }
+ 
+ /* ... (Your other CSS styles) ... */
+ 
+ /* Spaceship Docked */
+ .spaceship {
+   width: 50px;
+   height: 20px;
+   background-color: #ccc;
+   position: absolute;
+   top: 50%; /* Align with house vertically */
+   right: 380px; /* Adjust based on house position */
+   transform: translateY(-50%) rotate(90deg); /* Rotate for landing */
+   animation: none; /* Remove flying animation */
+ }
+ 
+ /* Optional: Landing Gear */
+ .spaceship::after {
+   content: '';  background-color: rgb(37, 16, 223);
+
+   position: absolute;
+   bottom: -5px;
+   left: 50%;
+   transform: translateX(50%);
+   width: 10px;
+   height: 5px;
+   background-color: rgb(37, 16, 223);
+ }.spaceship::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 5px;
+  background-color: rgb(37, 16, 223);
+}
+
  
 
  /* ... (Your existing styles) ... */
