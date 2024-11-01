@@ -141,3 +141,47 @@ body {
   background-color: green;
   margin: 0 auto; /* Center the body */
 }
+
+/* ... (Your existing styles) ... */
+
+/* New System Styles */
+.left-system {
+  position: absolute; /* Position relative to the body */
+  left: 5%; /* Adjust this value for horizontal positioning */
+  top: 60%; /* Adjust vertical positioning */
+  transform: translateX(-100%); /* Shift left by its own width */
+}
+
+/* Giraffe (using simple shapes) */
+.giraffe {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 20px;
+  height: 60px;
+  background-color: orange;
+  transform: rotate(45deg); /* Tilt the giraffe */
+}
+
+.giraffe::before { /* Head */
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+.giraffe::after { /* Neck */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 30px;
+  background-color: orange;
+}
